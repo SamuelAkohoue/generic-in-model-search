@@ -1,0 +1,23 @@
+{
+    "name": "innart-group/generic-in-model-search",
+    "description": "A generic search package for Laravel models.",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "InnartGroup\\GenericInModelSearch\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Samuel AKOHOUE",
+            "email": "samuelakohoueseg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "illuminate/http": "^8.0|^7.0|^6.0|^5.0"
+    }
+}
