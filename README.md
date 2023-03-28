@@ -1,15 +1,42 @@
 
 ## innart-group/generic-in-model-search(Developpment in progress)
 
+The innart-group/generic-in-model-search package is a Laravel package that provides a generic search functionality to models in a Laravel application. It allows you to search for a string in all the table associated with a model. The package is highly configurable and supports various search options, such as excluding certain models from the search and specifying the number of results per page. The package is easy to use and can save you a lot of time and effort when implementing search functionality in your Laravel application.
 
 
 ## Installation
 
+To install the innart-group/generic-in-model-search package using Composer, you can follow these steps:
+
+1. Open your terminal or command prompt and navigate to your Laravel project directory.
+
+2. Run the following command to add the package to your composer.json file:
+
+composer require innart-group/generic-in-model-search
+
+3. After running the command above, Composer will download and install the package and its dependencies.
+
+
+# Configuration
+1. Publish the package configuration file by running the following command:
+
+
+php artisan vendor:publish --provider="InnartGroup\GenericInModelSearch\GenericSearchServiceProvider" --tag=config
+
+This will copy the package's config.php file to your project's config directory.
+
+2. Open the config/generic-in-model-search.php file in your project and configure the options according to your needs.
 
 
 ## Usage
 
+Once the installation and configuration process is complete, you can start using the package in your Laravel project by importing the namespace and calling the genericSearch method:
 
+use InnartGroup\GenericInModelSearch\GenericSearch;
+
+$search = new GenericSearch();
+
+$results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpecified, $perPage, $totalResultsExpected);
 
 ## License
 
