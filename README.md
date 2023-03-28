@@ -12,7 +12,10 @@ To install the innart-group/generic-in-model-search package using Composer, you 
 
 2. Run the following command to add the package to your composer.json file:
 
+```php
 composer require innart-group/generic-in-model-search
+```
+
 
 3. After running the command above, Composer will download and install the package and its dependencies.
 
@@ -21,7 +24,10 @@ composer require innart-group/generic-in-model-search
 1. Publish the package configuration file by running the following command:
 
 
+
+```php
 php artisan vendor:publish --provider="InnartGroup\GenericInModelSearch\GenericSearchServiceProvider" --tag=config
+```
 
 This will copy the package's config.php file to your project's config directory.
 
@@ -32,12 +38,13 @@ This will copy the package's config.php file to your project's config directory.
 
 Once the installation and configuration process is complete, you can start using the package in your Laravel project by importing the namespace and calling the genericSearch method:
 
+```php
 use InnartGroup\GenericInModelSearch\GenericSearch;
 
 $search = new GenericSearch();
 
 $results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpecified, $perPage, $totalResultsExpected);
-
+```
 ## License
 
 The Laravel framework is open-sourced library licensed under the [MIT license](https://opensource.org/licenses/MIT).
