@@ -43,7 +43,7 @@ use InnartGroup\GenericInModelSearch\GenericSearch;
 
 $search = new GenericSearch();
 
-$results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpecified, $perPage, $totalResultsExpected);
+$results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpecified, $perPage,=$totalResultsExpected);
 ```
 
 Or by using default full database search :
@@ -51,6 +51,7 @@ Or by using default full database search :
 ```php
 
 use InnartGroup\GenericInModelSearch\GenericSearch;
+use Illuminate\Http\Request;
 
 $search = new GenericSearch();
 
@@ -59,7 +60,7 @@ $results = $search->genericSearchDefault($request);
 ```
 
 
-You can excluse some models by doing :
+You can exclude some models by doing :
 
 ```php
 
