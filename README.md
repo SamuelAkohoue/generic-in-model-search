@@ -49,6 +49,7 @@ $results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpec
 Or by using default full database search :
 
 ```php
+
 use InnartGroup\GenericInModelSearch\GenericSearch;
 
 $search = new GenericSearch();
@@ -56,9 +57,11 @@ $search = new GenericSearch();
 $results = $search->genericSearchDefault($request);
 
 ```
-```php
+
 
 You can excluse some models by doing :
+
+```php
 
 <?php
 
@@ -105,7 +108,6 @@ class SearchController extends Controller
             'message' => 'Something went wrong.',
         ], 400);
     }
-genericSearchDefault
 ```
 ## License
 
