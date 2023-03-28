@@ -13,14 +13,10 @@ class GenericSearch
      * Perform a generic search across multiple models and their properties.
      *
      * @param \Illuminate\Http\Request $request
-     * @param array $modelNameToExclude The list of model names to exclude from the search results.
-     * @param string $modelClassSpecified The namespace of the models to search.
-     * @param int $perPage The number of results to display per page.
-     * @param int|null $totalResultsExpected The maximum number of results allowed. Set to null to disable.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function genericSearch(Request $request, $modelNameToExclude, $modelClassSpecified, $perPage = 15, $totalResultsExpected = 0)
+    public function genericSearch(Request $request)
     {
         try {
             $query = $request->input('q');
@@ -31,6 +27,11 @@ class GenericSearch
             }, glob(app_path('Models/*.php')));
 
             $data = [];
+
+            $modelNameToExclude = config('generic-in-model-search.excluded_models');
+            $modelClassSpecified = config('generic-in-model-search.model_namespace');
+            $perPage = config('generic-in-model-search.per_page');
+            $totalResultsExpected = config('generic-in-model-search.total_results_expected');
 
             // Loop through each model and each property
             foreach ($models as $model) {
@@ -51,7 +52,7 @@ class GenericSearch
                         }
                         $data[$model][] = $result;
                     }
-                } 
+                }
             }
 
             if ($totalResultsExpected !== null) {
@@ -65,7 +66,7 @@ class GenericSearch
             }
 
             // Paginate the results if necessary
-            $currentPage = $request->input('perPage', 1);
+            $currentPage = $request->input('page', 1);
             $offset = ($currentPage - 1) * $perPage;
 
             foreach ($data as $model => $results) {
@@ -75,7 +76,7 @@ class GenericSearch
             // Return the search results as a paginated JSON response
             return $this->returnResponse($data, $totalResults, $perPage, $currentPage);
 
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
             return response()->json([
                 'message' => 'An error occurred while processing your request.',
             ], 500);
@@ -102,5 +103,4 @@ class GenericSearch
             'last_page' => ceil($totalResults / $perPage),
         ]);
     }
-
 }
