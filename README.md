@@ -21,7 +21,8 @@ composer require innart-group/generic-in-model-search
 
 
 # Configuration
-1. Publish the package configuration file by running the following command:
+
+4. Publish the package configuration file by running the following command:
 
 
 
@@ -31,7 +32,7 @@ php artisan vendor:publish --provider="InnartGroup\GenericInModelSearch\GenericS
 
 This will copy the package's config.php file to your project's config directory.
 
-2. Open the config/generic-in-model-search.php file in your project and configure the options according to your needs.
+5. Open the config/generic-in-model-search.php file in your project and configure the options according to your needs.
 
 
 ## Usage
