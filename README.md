@@ -45,6 +45,68 @@ $search = new GenericSearch();
 
 $results = $search->genericSearch($request, $modelNameToExclude, $modelClassSpecified, $perPage, $totalResultsExpected);
 ```
+
+Or by using default full database search :
+
+```php
+use InnartGroup\GenericInModelSearch\GenericSearch;
+
+$search = new GenericSearch();
+
+$results = $search->genericSearchDefault($request);
+
+```
+```php
+
+You can excluse some models by doing :
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use InnartGroup\GenericInModelSearch\GenericSearch;
+
+/**
+ * Controller class for handling search functionality.
+ */
+class SearchController extends Controller
+{
+    /**
+     * Handles the search request and returns the search results.
+     *
+     * @param Request $request The HTTP request object.
+     *
+     * @return \Illuminate\Http\JsonResponse The HTTP response containing the search results.
+     */
+    public function search(Request $request)
+    {
+        $modelClass = 'App\Models\\';
+        $search = new GenericSearch();
+        // Check if the user is logged in
+        if (Auth::check()) {
+            // Check if the user is an admin or a trainer or a learner
+            if (Auth::user()->isAdmin) {
+                // Exclude the 'User' model from the search results
+                $modelNameToExclude = [];
+                return $search->genericSearch($request, $modelNameToExclude, $modelClass, 15, 100);
+            }
+            if (!Auth::user()->isAdmin) {
+                // Exclude the 'User' model from the search results
+                $modelNameToExclude = ['User', 'Confirmation'];
+                return $search->genericSearch($request, $modelNameToExclude, $modelClass, 15, 100);
+            }
+        }
+    
+        }
+        // If none of the above cases are true, return an error response
+        return response()->json([
+            'message' => 'Something went wrong.',
+        ], 400);
+    }
+genericSearchDefault
+```
 ## License
 
 The Laravel framework is open-sourced library licensed under the [MIT license](https://opensource.org/licenses/MIT).
