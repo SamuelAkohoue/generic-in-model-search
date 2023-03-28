@@ -86,7 +86,7 @@ class SearchController extends Controller
         $search = new GenericSearch();
         // Check if the user is logged in
         if (Auth::check()) {
-            // Check if the user is an admin or a trainer or a learner
+            // Check if the user is an admin 
             if (Auth::user()->isAdmin) {
                 // Exclude the 'User' model from the search results
                 $modelNameToExclude = [];
