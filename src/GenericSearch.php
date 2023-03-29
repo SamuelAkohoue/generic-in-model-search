@@ -168,12 +168,14 @@ class GenericSearch
      */
     public function returnResponse($data, $totalResults, $perPage, $currentPage)
     {
-        return response()->json([
+        $response = [
             'data' => $data,
             'total' => $totalResults,
             'per_page' => $perPage,
             'current_page' => $currentPage,
             'last_page' => ceil($totalResults / $perPage),
-        ]);
+        ];
+    
+        return collect($response);
     }
 }
