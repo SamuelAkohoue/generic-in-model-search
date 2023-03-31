@@ -1,5 +1,5 @@
 
-## innart-group/generic-in-model-search(Developpment in progress)
+## innart-group/generic-in-model-search(Development in progress)
 
 The innart-group/generic-in-model-search package is a Laravel package that provides a generic search functionality to models in a Laravel application. It allows you to search for a string in all the table associated with a model. The package is highly configurable and supports various search options, such as excluding certain models from the search and specifying the number of results per page. The package is easy to use and can save you a lot of time and effort when implementing search functionality in your Laravel application.
 
